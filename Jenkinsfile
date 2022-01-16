@@ -18,8 +18,8 @@ pipeline {
 		stage('Build') {
 			steps {
 				// Example shell script in the groovy file
-				// sh 'mvn --version'
-				// sh 'docker version'
+				sh 'mvn --version'
+				sh 'docker version'
 				echo "Build"
 				echo "PATH - $PATH"
 				echo "BUILD_NUMBER - $env.BUILD_NUMBER"
