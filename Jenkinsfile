@@ -7,7 +7,9 @@ pipeline {
 	// All subsequent steps will now happen inside a docker container
 	agent { 
 		any { 
-			image 'maven:3.6.3' 
+			docker { 
+				image 'maven:3.6.3' 
+				} 
 			} 
 		}
 	stages {
