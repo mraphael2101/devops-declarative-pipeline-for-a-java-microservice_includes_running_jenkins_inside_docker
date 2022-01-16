@@ -22,5 +22,16 @@ pipeline {
 				echo "Integration Test"
 			}
 		}
+	} 
+	post {
+		always {
+			echo "This block of code will always execute"
+		}
+		success {
+			echo "This block of code only runs if the job is successful"
+		}
+		failure {
+			echo "This block of code only runs if the job fails at a specific step"
+		}
 	}
 }
