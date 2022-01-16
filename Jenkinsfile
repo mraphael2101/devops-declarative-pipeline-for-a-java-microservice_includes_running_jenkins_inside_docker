@@ -7,13 +7,14 @@ pipeline {
 	// All subsequent steps will now happen inside a docker container
 	agent { 
 		label 'docker' 
-		docker {
-			label 'docker' 
-			image 'maven:3.8.4' 
-			}  
 		}
+	
 	stages {
 		stage('Build') {
+			docker {
+				label 'docker' 
+				image 'maven:3.8.4' 
+				}  
 			steps {
 				// Example shell script in the groovy file
 				sh 'mvn --version'
