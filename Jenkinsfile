@@ -3,18 +3,17 @@
 // A DECLARATIVE PIPELINE
 
 pipeline {
-	
 	// All subsequent steps will now happen inside a docker container
-	agent none
-	
+	agent any 
+
 	stages {
 		stage('Build') {
-			agent {
-				docker {
-					image 'maven:3.8.4'
-					args '--name docker-node'
-				}
-			}  
+			agent{
+				docker { 
+					image 'maven:3.8.4' 
+					reuseNode true
+				} 
+			}
 			steps {
 				// Example shell script in the groovy file
 				sh 'mvn --version'
