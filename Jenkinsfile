@@ -5,12 +5,13 @@
 pipeline {
 	
 	// agent any
-	agent { docker { image 'maven:3.6.3' } }	// As a result of this, all subsequent steps will happen inside a docker container
-
+	// All subsequent steps will now happen inside a docker container
+	agent { docker { image 'maven:3.6.3' } }
 	stages {
 		stage('Build') {
 			steps {
-				sh 'mvn --version' // This is a shell script in the groovy file
+				// Example shell script in the groovy file
+				sh 'mvn --version'
 				echo "Build"
 			}
 		}
