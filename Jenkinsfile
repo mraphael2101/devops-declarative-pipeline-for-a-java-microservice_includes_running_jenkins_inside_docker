@@ -4,16 +4,25 @@
 
 pipeline {
 	// All subsequent steps will now happen inside a docker container
-	agent none
+	agent any
+	// Figure out why you cannot run jenkins inside a docker container
+	//agent{ docker { image 'maven:3.8.4-adoptopenjdk-11' } }
+	
+	environment {
+		dockerHome = tool 'myDocker'
+		mavenHome = tool 'myMaven'
+		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+	}
+	
 	stages {
 		stage('Build') {
-			agent{
-				docker { image 'maven:3.8.4-adoptopenjdk-11' } 
-			}
 			steps {
 				// Example shell script in the groovy file
-				sh 'mvn --version'
+				// sh 'mvn --version'
+				// sh 'docker version'
 				echo "Build"
+				echo "PATH - $PATH"
+				echo "BUILD_NUMBER - $env.BUILD_NUMBER"
 			}
 		}
 		stage('Test') {
