@@ -6,7 +6,9 @@ pipeline {
 	
 	// All subsequent steps will now happen inside a docker container
 	agent { 
-		docker { 
+		label 'docker' 
+		docker {
+			label 'docker' 
 			image 'maven:3.8.4' 
 			}  
 		}
