@@ -1,14 +1,16 @@
 
 
-// DECLARATIVE PIPELINE
+// A DECLARATIVE PIPELINE
 
 pipeline {
 	
-	agent any
-	
+	// agent any
+	agent { docker { image 'maven:3.6.3' } }	// As a result of this, all subsequent steps will happen inside a docker container
+
 	stages {
 		stage('Build') {
 			steps {
+				sh 'mvn --version' // This is a shell script in the groovy file
 				echo "Build"
 			}
 		}
