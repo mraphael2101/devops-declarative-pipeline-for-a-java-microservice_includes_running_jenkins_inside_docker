@@ -14,7 +14,8 @@ pipeline {
 			steps {
 				docker {
 					label 'docker' 
-					image 'maven:3.8.4' 
+					image 'maven:3.8.4'
+					args '--name docker-node'
 				}  
 				// Example shell script in the groovy file
 				sh 'mvn --version'
