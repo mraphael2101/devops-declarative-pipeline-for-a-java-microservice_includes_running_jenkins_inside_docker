@@ -6,9 +6,8 @@ pipeline {
 	
 	// All subsequent steps will now happen inside a docker container
 	agent { 
-		docker { 
+		any { 
 			image 'maven:3.6.3' 
-			args '-u root'
 			} 
 		}
 	stages {
