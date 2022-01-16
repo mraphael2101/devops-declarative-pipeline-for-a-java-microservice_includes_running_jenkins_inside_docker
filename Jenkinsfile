@@ -4,16 +4,11 @@
 
 pipeline {
 	// All subsequent steps will now happen inside a docker container
-	agent any 
-
+	agent none
 	stages {
 		stage('Build') {
 			agent{
-				docker { 
-					image 'maven:3.8.1-adoptopenjdk-11' 
-					args '-v $HOME/.m2:/root/.m2'
-					reuseNode true
-				} 
+				docker { image 'maven:3.8.4-adoptopenjdk-11' } 
 			}
 			steps {
 				// Example shell script in the groovy file
