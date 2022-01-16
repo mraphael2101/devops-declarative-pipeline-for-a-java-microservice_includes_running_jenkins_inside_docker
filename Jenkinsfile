@@ -4,9 +4,12 @@
 
 pipeline {
 	
-	// agent any
 	// All subsequent steps will now happen inside a docker container
-	agent { docker { image 'maven:3.6.3' } }
+	agent any { 
+		docker { 
+			image 'maven:3.6.3' 
+			} 
+		}
 	stages {
 		stage('Build') {
 			steps {
