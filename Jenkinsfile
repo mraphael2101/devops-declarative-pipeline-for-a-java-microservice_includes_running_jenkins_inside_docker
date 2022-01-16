@@ -11,11 +11,11 @@ pipeline {
 	
 	stages {
 		stage('Build') {
-			docker {
-				label 'docker' 
-				image 'maven:3.8.4' 
-				}  
 			steps {
+				docker {
+					label 'docker' 
+					image 'maven:3.8.4' 
+				}  
 				// Example shell script in the groovy file
 				sh 'mvn --version'
 				echo "Build"
